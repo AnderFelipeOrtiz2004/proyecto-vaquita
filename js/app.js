@@ -1575,7 +1575,9 @@ syncScene();
 window.setInterval(syncScene, 15 * 1000);
 window.setInterval(updateRest, 1000);
 
-if ("serviceWorker" in navigator) {
+const isNative = Boolean(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+
+if ("serviceWorker" in navigator && !isNative) {
   navigator.serviceWorker.register("./sw.js").catch(() => {});
 }
 
@@ -1596,7 +1598,7 @@ function hideInstallToast(save) {
 }
 
 function showInstallToast() {
-  if (isStandalone || localStorage.getItem(INSTALL_KEY) || playing || mailOpen) {
+  if (isNative || isStandalone || localStorage.getItem(INSTALL_KEY) || playing || mailOpen) {
     return;
   }
   if (isIos) {

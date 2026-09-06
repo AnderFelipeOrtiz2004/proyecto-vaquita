@@ -1,0 +1,11 @@
+{
+  "appId": "com.vania.vani",
+  "appName": "Vani",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": true
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

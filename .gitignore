@@ -3,3 +3,13 @@ Thumbs.db
 *.log
 .idea/
 .vscode/
+node_modules/
+www/
+android/.gradle/
+android/app/build/
+android/build/
+android/captures/
+android/local.properties
+*.iml
+*.keystore
+*.jks
