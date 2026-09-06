@@ -44,6 +44,23 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+button,
+a,
+img,
+input {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+button:focus-visible,
+a:focus,
+a:focus-visible {
+  outline: none;
 }
 
 html,
@@ -555,7 +572,8 @@ body {
   image-rendering: crisp-edges;
   user-select: none;
   -webkit-user-drag: none;
-  cursor: pointer;
+  touch-action: none;
+  cursor: grab;
   transform-origin: 50% 88%;
 }
 

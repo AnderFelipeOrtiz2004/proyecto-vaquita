@@ -1,4 +1,4 @@
-const CACHE = "vani-88";
+const CACHE = "vani-90";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

@@ -1122,9 +1122,6 @@ function saveMail(data) {
 }
 
 function mailIconSrc(data) {
-  if (specialNote(new Date())) {
-    return MAIL.heart;
-  }
   if (!data.read) {
     return MAIL.unread;
   }
@@ -1134,11 +1131,7 @@ function mailIconSrc(data) {
 function renderMail() {
   const data = loadMail();
   mailIcon.src = mailIconSrc(data);
-  const special = Boolean(specialNote(new Date()));
-  mailBtn.setAttribute(
-    "aria-label",
-    data.read ? "Carta del día, leída" : special ? "Carta especial" : "Carta nueva",
-  );
+  mailBtn.setAttribute("aria-label", data.read ? "Carta del día, leída" : "Carta nueva");
 }
 
 const HEART_SRC = [0, 1, 2, 3, 4].map((i) => `sprites/heart-${String(i).padStart(2, "0")}.png?v=79`);
@@ -1167,7 +1160,7 @@ function stopLetterHearts() {
 }
 
 function fillLetter(date, forcedSpecial) {
-  const special = forcedSpecial || specialNote(date);
+  const special = forcedSpecial || null;
   const note = special || dailyNote(date);
   letterKicker.textContent = special ? "Día especial" : "Nota del día";
   letterTitle.textContent = note.title;
@@ -1481,7 +1474,7 @@ function isBirthday(date) {
 function maybeShowGift() {
   const now = new Date();
   giftBtn.classList.toggle("hidden", playing || !isBirthday(now));
-  if (mailOpen && !specialNote(now)) {
+  if (mailOpen && letterCard.classList.contains("is-long") && !isBirthday(now)) {
     closeMail();
   }
 }
@@ -1548,11 +1541,38 @@ playBtn.addEventListener("pointerdown", (event) => {
   startPlay();
 });
 
-pet.addEventListener("click", () => {
-  if (!playing && !mailOpen) {
+let strokeStart = null;
+let stroked = false;
+
+pet.addEventListener("pointerdown", (event) => {
+  if (playing || mailOpen) {
+    return;
+  }
+  event.preventDefault();
+  event.stopPropagation();
+  strokeStart = { x: event.clientX, y: event.clientY };
+  stroked = false;
+  pet.setPointerCapture(event.pointerId);
+});
+
+pet.addEventListener("pointermove", (event) => {
+  if (!strokeStart || stroked || playing || mailOpen) {
+    return;
+  }
+  const dist = Math.hypot(event.clientX - strokeStart.x, event.clientY - strokeStart.y);
+  if (dist >= 28) {
+    stroked = true;
     caress();
   }
 });
+
+function endStroke() {
+  strokeStart = null;
+  stroked = false;
+}
+
+pet.addEventListener("pointerup", endStroke);
+pet.addEventListener("pointercancel", endStroke);
 
 phone.addEventListener("pointerdown", (event) => {
   markAwake();
