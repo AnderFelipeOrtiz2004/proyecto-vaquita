@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#7fb36a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Vani" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Vani</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="icons/app-icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/app-icon-192.png" />
+    <link rel="stylesheet" href="css/style.css?v=88" />
+  </head>
+  <body>
+    <div class="phone">
+      <div class="sky" aria-hidden="true"></div>
+      <section id="home" class="screen">
+        <header class="top">
+          <div class="sign" id="note" aria-live="polite">
+            <div class="sign-chains" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </div>
+            <article class="sign-board">
+              <h1 id="note-time">00:00</h1>
+              <p class="note-hello" id="note-hello">buenos días</p>
+              <p class="note-text" id="note-text"></p>
+            </article>
+          </div>
+          <div class="mail-stack">
+            <button id="mail-btn" class="mail-btn" type="button" aria-label="Carta del día">
+              <img
+                id="mail-icon"
+                src="sprites/mail-01.png?v=77"
+                alt=""
+                width="32"
+                height="32"
+                draggable="false"
+              />
+            </button>
+            <button id="gift-btn" class="gift-btn hidden" type="button" aria-label="Regalo de Vania">
+              <img src="sprites/gift.png?v=78" alt="" width="32" height="32" draggable="false" />
+            </button>
+          </div>
+        </header>
+
+        <div class="play-hud" id="play-hud">
+          <p class="play-best" id="play-best">mejor 0</p>
+          <strong class="play-score" id="play-score">0</strong>
+        </div>
+
+        <main class="stage">
+          <img
+            id="pet"
+            class="pet"
+            src="sprites/frame-1.png"
+            alt="Vani"
+            width="32"
+            height="32"
+            draggable="false"
+          />
+        </main>
+
+        <img
+          id="ball"
+          class="ball hidden"
+          src="sprites/ball.png"
+          alt=""
+          width="118"
+          height="118"
+          draggable="false"
+        />
+
+        <div class="ground"></div>
+
+        <div id="letter-overlay" class="letter-overlay hidden">
+          <img id="letter-anim" class="letter-anim" src="sprites/mail-01.png?v=77" alt="" width="32" height="32" draggable="false" />
+          <article id="letter-card" class="letter-card hidden">
+            <p class="letter-kicker" id="letter-kicker">Nota del día</p>
+            <h2 id="letter-title"></h2>
+            <p id="letter-body"></p>
+            <footer id="letter-sign" class="letter-sign hidden">
+              <span class="letter-hearts" aria-hidden="true">
+                <img class="letter-heart" alt="" width="16" height="16" draggable="false" />
+                <img class="letter-heart" alt="" width="16" height="16" draggable="false" />
+                <img class="letter-heart" alt="" width="16" height="16" draggable="false" />
+              </span>
+              <p>Felipe.O</p>
+            </footer>
+            <p id="letter-expire" class="letter-expire hidden">Esta carta se borra a la medianoche.</p>
+            <div class="letter-actions">
+              <button id="letter-save" class="letter-close" type="button">descargar</button>
+              <button id="letter-close" class="letter-close" type="button">cerrar</button>
+            </div>
+          </article>
+        </div>
+
+        <nav class="menu" aria-label="Acciones">
+          <button id="drink-btn" class="menu-btn" type="button" aria-label="Sed">
+            <img
+              id="drink-icon"
+              src="sprites/drink-00.png"
+              alt=""
+              width="32"
+              height="32"
+              draggable="false"
+            />
+          </button>
+          <button id="food-btn" class="menu-btn" type="button" aria-label="Hambre">
+            <img
+              id="food-icon"
+              src="sprites/food-00.png"
+              alt=""
+              width="32"
+              height="32"
+              draggable="false"
+            />
+          </button>
+          <button id="bath-btn" class="menu-btn" type="button" aria-label="Baño">
+            <img
+              id="bath-icon"
+              src="sprites/sponge-00.png"
+              alt=""
+              width="32"
+              height="40"
+              draggable="false"
+            />
+          </button>
+          <button id="play-btn" class="menu-btn" type="button" aria-label="Juego, Aburrimiento">
+            <img
+              id="play-icon"
+              src="sprites/game-00.png?v=75"
+              alt=""
+              width="32"
+              height="32"
+              draggable="false"
+            />
+          </button>
+        </nav>
+
+        <div id="install-toast" class="install-toast hidden">
+          <p id="install-text">Guarda Vani en tu celular. Así se abre como una app.</p>
+          <div class="install-actions">
+            <button id="install-btn" class="letter-close" type="button">instalar</button>
+            <button id="install-close" class="letter-close" type="button">luego</button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="js/app.js?v=88"></script>
+  </body>
+</html>

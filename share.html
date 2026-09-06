@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abrir Vani</title>
+    <link rel="stylesheet" href="css/style.css?v=88" />
+    <style>
+      body {
+        padding: 24px 16px;
+      }
+
+      .share-card {
+        width: min(100%, 360px);
+        padding: 22px 18px 18px;
+        text-align: center;
+        color: #3d2a18;
+        background: #efe4c8;
+        box-shadow:
+          0 0 0 3px #3d2118,
+          6px 8px 0 rgba(36, 24, 16, 0.28);
+      }
+
+      .share-card h1 {
+        margin-bottom: 8px;
+        font-size: 1.4rem;
+      }
+
+      .share-card p {
+        line-height: 1.35;
+      }
+
+      .share-card img {
+        display: block;
+        width: 220px;
+        height: 220px;
+        margin: 16px auto;
+        background: #fff;
+        box-shadow: 0 0 0 3px #3d2118;
+      }
+
+      .share-card a {
+        display: inline-block;
+        margin-top: 12px;
+        color: #3d2a18;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="share-card">
+      <h1>Vani</h1>
+      <p>Escanea el código o toca el enlace para abrirla. Luego instálala en el celular.</p>
+      <img id="qr" alt="Código QR de Vani" width="220" height="220" />
+      <p id="link-wrap"><a id="app-link" href="./">Abrir Vani</a></p>
+    </article>
+    <script>
+      const url = new URL("./", window.location.href).href;
+      document.getElementById("app-link").href = url;
+      document.getElementById("qr").src =
+        "https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=8&data=" +
+        encodeURIComponent(url);
+    </script>
+  </body>
+</html>
